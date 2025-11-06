@@ -13,9 +13,10 @@ logoFile="assets/finalprotocol/logo.png"
 credits="Developed by WQ"
 authors="Bohdan Ihnatenko (WQ)"
 description=''' 
-An advanced Mekanism addon introducing the Final Protocol Core — 
-a high-tech failsafe that stores your inventory data upon death. 
-Energy-driven, risk-balanced, and fully integrated with Mekanism’s security and energy systems.
+An advanced Mekanism addon introducing the Final Protocol Core —
+a high-tech failsafe that stores your inventory data upon death.
+Energy-driven, risk-balanced, and fully integrated with Mekanism’s
+security and energy systems.
 '''
 
 [[dependencies.finalprotocol]]

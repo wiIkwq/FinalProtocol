@@ -1,10 +1,18 @@
-plugins {
-    id 'eclipse'
-    id 'maven-publish'
-    id 'net.minecraftforge.gradle' version '6.0.+'
+buildscript {
+    repositories {
+        maven { url = 'https://maven.minecraftforge.net' }
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:6.0.+'
+    }
 }
 
-group = 'com.wira.finalprotocol'
+apply plugin: 'net.minecraftforge.gradle'
+apply plugin: 'eclipse'
+apply plugin: 'maven-publish'
+
+group = 'com.wiIk_wq.finalprotocol'
 version = '1.0.0'
 archivesBaseName = 'FinalProtocol'
 
@@ -38,18 +46,18 @@ minecraft {
 repositories {
     mavenCentral()
     maven { url = "https://maven.minecraftforge.net" }
-    maven { url = "https://modmaven.dev/" } // ✅ официальный репозиторий Mekanism
+    maven { url = "https://modmaven.dev/" } // Mekanism official Maven
 }
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.20.1-47.4.10'
 
-    // ✅ Mekanism API и runtime
+    // ✅ Mekanism API and runtime modules
     compileOnly "mekanism:Mekanism:${mekanism_version}:api"
-    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}") // Core
+    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}")           // Core
     runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:additions") // Optional
-    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:generators") // Optional
-    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:tools") // Optional
+    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:generators")
+    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:tools")
 }
 
 jar {
