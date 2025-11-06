@@ -13,7 +13,7 @@ import org.slf4j.Logger;
  */
 @Mod(FinalProtocol.MOD_ID)
 public class FinalProtocol {
-    public static final String MOD_ID = "finalprotocol";
+    public static final String MOD_ID = "finalprotocol"; // ✅ исправлено
     private static final Logger LOGGER = LogUtils.getLogger();
 
     public FinalProtocol() {
