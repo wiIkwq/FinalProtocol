@@ -1,6 +1,6 @@
 {
   "pack": {
-    "description": "finalprotocol resources",
-    "pack_format": 15
+    "pack_format": 15,
+    "description": "Final Protocol - Mekanism Expansion Addon. Energy-driven failsafe technology for post-death inventory restoration."
   }
 }
