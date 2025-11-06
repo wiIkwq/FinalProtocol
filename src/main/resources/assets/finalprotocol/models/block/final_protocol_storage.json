@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "finalprotocol:block/final_protocol_storage"
+  }
+}
