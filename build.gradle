@@ -1,7 +1,8 @@
 buildscript {
     repositories {
-        maven { url = 'https://maven.minecraftforge.net' }
         mavenCentral()
+        maven { url = "https://maven.minecraftforge.net" }
+        maven { url = "https://modmaven.dev" }
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:6.0.+'
@@ -18,8 +19,11 @@ archivesBaseName = 'FinalProtocol'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
+def minecraft_version = "1.20.1"
+def mekanism_version = "1.20.1-10.4.9.61"
+
 minecraft {
-    mappings channel: 'official', version: '1.20.1'
+    mappings channel: 'official', version: minecraft_version
 
     runs {
         client {
@@ -31,6 +35,7 @@ minecraft {
                 }
             }
         }
+
         server {
             workingDirectory project.file('run')
             property 'forge.logging.console.level', 'debug'
@@ -46,29 +51,29 @@ minecraft {
 repositories {
     mavenCentral()
     maven { url = "https://maven.minecraftforge.net" }
-    maven { url = "https://modmaven.dev/" } // Mekanism official Maven
+    maven { url = "https://modmaven.dev" }
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.20.1-47.4.10'
+    minecraft "net.minecraftforge:forge:${minecraft_version}-47.4.10"
 
-    // ✅ Mekanism API and runtime modules
-    compileOnly "mekanism:Mekanism:${mekanism_version}:api"
-    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}")           // Core
-    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:additions") // Optional
-    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:generators")
-    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:tools")
+    // Локальные JAR-файлы Mekanism
+    implementation fg.deobf(files("libs/Mekanism-1.20.1-10.4.9.61.jar"))
+    implementation fg.deobf(files("libs/Mekanism-1.20.1-10.4.9.61-api.jar"))
+    runtimeOnly fg.deobf(files("libs/Mekanism-1.20.1-10.4.9.61-additions.jar"))
+    runtimeOnly fg.deobf(files("libs/Mekanism-1.20.1-10.4.9.61-generators.jar"))
+    runtimeOnly fg.deobf(files("libs/Mekanism-1.20.1-10.4.9.61-tools.jar"))
 }
 
 jar {
     manifest {
         attributes([
-                "Specification-Title": "Final Protocol",
-                "Specification-Vendor": "WQ",
-                "Specification-Version": "1",
-                "Implementation-Title": project.name,
-                "Implementation-Version": project.version,
-                "Implementation-Vendor": "Bohdan Ihnatenko (WQ)",
+                "Specification-Title"     : "Final Protocol",
+                "Specification-Vendor"    : "WQ",
+                "Specification-Version"   : "1",
+                "Implementation-Title"    : project.name,
+                "Implementation-Version"  : project.version,
+                "Implementation-Vendor"   : "wiIk_wq",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
