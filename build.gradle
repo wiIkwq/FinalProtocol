@@ -36,22 +36,20 @@ minecraft {
 }
 
 repositories {
-    maven {
-        name = "CurseMaven"
-        url = "https://cursemaven.com"
-    }
     mavenCentral()
     maven { url = "https://maven.minecraftforge.net" }
+    maven { url = "https://modmaven.dev/" } // ✅ официальный репозиторий Mekanism
 }
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.20.1-47.4.10'
 
-    // Mekanism dependency
-    implementation fg.deobf("curse.maven:mekanism-268560:5798032") // Mekanism 10.4.0+
-
-    // Optional: JEI for dev
-    runtimeOnly fg.deobf("curse.maven:jei-238222:5798080")
+    // ✅ Mekanism API и runtime
+    compileOnly "mekanism:Mekanism:${mekanism_version}:api"
+    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}") // Core
+    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:additions") // Optional
+    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:generators") // Optional
+    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:tools") // Optional
 }
 
 jar {
